@@ -2,10 +2,18 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { useEffect } from 'react';
+import { use } from 'react';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState( () =>{
+    return localStorage.getItem("mode") == "true";
+  });
 
+
+  useEffect(() => {
+    localStorage.setItem("mode", darkMode)
+  }, [darkMode])
 
   
   return (
